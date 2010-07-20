@@ -1,0 +1,18 @@
+================================================================================
+                           FLEXlm Nagios Plugins
+================================================================================
+
+Revision history
+----------------
+
+0.03	20/07/2010 17:28:24 CEST
+	- Updated documentation
+	- Setup GIT repo
+
+0.02	23/06/2010 17:30:22 CEST
+	- Created documentation
+	- Add error message from lmutil output
+	- Added performance data
+
+0.01	21/06/2010 15:24:32 CEST
+	- Initial revision

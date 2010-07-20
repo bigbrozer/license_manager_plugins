@@ -1,0 +1,82 @@
+================================================================================
+                           FLEXlm Nagios Plugins
+================================================================================
+
+About
+=====
+
+Collection of plugins to check the status of FLEXlm license server.
+
+ * check_flexlm_status              : check status and license usage.
+
+Features:
+
+ * Check if license server is reachable (using a license file or port).
+ * Check if vendor daemon is up and running.
+ * Get license usage (available as performance data and in long output for direct information)
+
+Installation
+============
+
+Requirements
+------------
+
+You need to install "lmutil" utility on your Nagios server in order to use the plugin:
+
+  http://www.globes.com/support/fnp_utilities_download.htm
+
+Once you downloaded the file, copy content in a directory.
+
+Get the plugin package
+----------------------
+
+Note:
+  I recommend installing 'git' on your Nagios server in order to download and keep up to date this plugin.
+  If you are behind a proxy, you can export http_proxy environment variable before.
+
+Go inside your Nagios plugins directory (usually /usr/local/nagios/libexec), then type in:
+
+  git clone git://github.com/bigbrozer/flexlm_nagios_plugins.git
+
+This will create a new folder "flexlm_nagios_plugins" with the plugin data inside.
+
+Configuration
+-------------
+
+Edit the file "config.py" and set LMUTIL_PATH variable to the location of lmutil on your system.
+
+  LMUTIL_PATH = "/path/to/lmutil"
+
+Usage
+=====
+
+Usage: check_flexlm_status.py [options]
+
+Options:
+  -h, --help  show help message and exit
+  -l LICENSE  FLEXlm port or license file to check
+
+Example:
+
+  check_flexlm_status.py -l 2700@my_license_server
+
+Contact
+=======
+
+Author              : Vincent 'v!nZ' Besançon
+Project home page   : http://github.com/bigbrozer/flexlm_nagios_plugins
+Email               : besancon [DOT] vincent [AT] gmail [DOT] com
+Support             : http://github.com/bigbrozer/flexlm_nagios_plugins/issues
+
+Support
+=======
+
+Feel free to send me email if you need help or send me remarks, suggestions, etc...
+I recommend to use issue page on Github (see Support link above) if you think there is a problem with this plugin.
+
+License
+=======
+
+See LICENSE file inside plugin package.
+
+Enjoy ;-)

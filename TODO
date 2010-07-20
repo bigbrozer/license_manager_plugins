@@ -1,0 +1,15 @@
+================================================================================
+                           FLEXlm Nagios Plugins
+================================================================================
+
+Todo list
+---------
+
+- Write plugin "check_flexlm_feature_expiration": check if a feature is expired or about to expire.
+  - Check for expiration date of features (thresholds in days availables)
+
+- Write plugin "check_flexlm_feature_lock": check if a license for a feature is issued for a long time.
+  - Check if a feature is issued for too much time (thresholds in days availables).
+
+- Create a PNP template for license usage.
+  - Create a graph per DS.
