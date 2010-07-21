@@ -1,7 +1,7 @@
 #===============================================================================
 # -*- coding: ISO-8859-1 -*-
 # Module        : backend.flexlm
-# Author        : Vincent BESANCON aka 'v!nZ' <vincent.besancon@faurecia.com>
+# Author        : Vincent BESANCON aka 'v!nZ' <besancon.vincent@gmail.com>
 # Description   : Utility functions to get info from FLEXlm license server.
 #-------------------------------------------------------------------------------
 # This file is part of flexlm_nagios_plugins.

@@ -2,7 +2,7 @@
 # -*- coding: ISO-8859-1 -*-
 #===============================================================================
 # Name          : check_flexlm_status
-# Author        : Vincent BESANCON aka 'v!nZ' <vincent.besancon@faurecia.com>
+# Author        : Vincent BESANCON aka 'v!nZ' <besancon.vincent@gmail.com>
 # Description   : Check FLEXlm license server status and license usage.
 #-------------------------------------------------------------------------------
 # This file is part of flexlm_nagios_plugins.

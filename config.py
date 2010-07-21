@@ -1,7 +1,7 @@
 #===============================================================================
 # -*- coding: ISO-8859-1 -*-
 # Module        : config
-# Author        : Vincent BESANCON aka 'v!nZ' <vincent.besancon@faurecia.com>
+# Author        : Vincent BESANCON aka 'v!nZ' <besancon.vincent@gmail.com>
 # Description   : Configuration file for the plugin.
 #-------------------------------------------------------------------------------
 # This file is part of flexlm_nagios_plugins.

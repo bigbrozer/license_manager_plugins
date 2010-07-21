@@ -1,7 +1,7 @@
 #===============================================================================
 # -*- coding: ISO-8859-1 -*-
 # Module        : errorlevels
-# Author        : Vincent BESANCON aka 'v!nZ' <vincent.besancon@faurecia.com>
+# Author        : Vincent BESANCON aka 'v!nZ' <besancon.vincent@gmail.com>
 # Description   : Define class for Nagios error exceptions.
 #-------------------------------------------------------------------------------
 # This file is part of flexlm_nagios_plugins.
