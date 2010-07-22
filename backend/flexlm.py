@@ -38,18 +38,16 @@ def status(license_port):
     cmdline = [config.LMUTIL_PATH, "lmstat", "-c", license_port, '-a']
     
     lmstat = subprocess.Popen(cmdline, stdout=subprocess.PIPE)
-    lmstat_return_code = lmstat.wait()
-    
-    lmstat_output = lmstat.stdout.readlines()
+    lmstat_output = lmstat.communicate()[0].split('\n')
     
     # Check return code
-    if lmstat_return_code != 0:
+    if lmstat.returncode != 0:
         # Get error message
         error_pattern = re.compile('Error getting status: (.*). \(.*\)')
         error_match = error_pattern.search(lmstat_output[-1])
         if error_match: lmstat_error_message = error_match.group(1)
         else: lmstat_error_message = "Unknown error !"
-        raise FlexlmStatusError(lmstat_error_message, lmstat_return_code, license_port)
+        raise FlexlmStatusError(lmstat_error_message, lmstat.returncode, license_port)
     
     return lmstat_output
 
