@@ -5,7 +5,9 @@
 Revision history
 ----------------
 
-0.03	20/07/2010 17:28:24 CEST
+0.03	22/07/2010 14:02:43 CEST
+	- Add missing LICENSE file
+	- Fix deadlocks reading from STDOUT pipe
 	- Updated documentation
 	- Setup GIT repo
 
