@@ -60,6 +60,27 @@ Example:
 
   check_flexlm_status.py -l 2700@my_license_server
 
+  OK - ABAQUSLM: usage: 275 / 17456 license(s)
+  Feature 'abaqus': 130 / 150
+  Feature 'ams': 0 / 1
+  Feature 'aqua': 0 / 150
+  Feature 'design': 0 / 150
+  Feature 'euler_lagrange': 0 / 1
+  Feature 'multiphysics': 0 / 1
+  Feature 'cse': 0 / 1
+  Feature 'cosim_acusolve': 0 / 1
+  Feature 'cosim_direct': 0 / 1
+  Feature 'parallel': 8 / 16384
+  Feature 'cae': 1 / 2
+  Feature 'viewer': 6 / 9
+  Feature 'moldflow': 0 / 1
+  Feature 'afcv5_structural': 0 / 2
+  Feature 'afcv5_thermal': 0 / 2
+  Feature 'standard': 92 / 150
+  Feature 'explicit': 30 / 150
+  Feature 'foundation': 8 / 150
+  Feature 'cfd': 0 / 150
+
 Contact
 =======
 
