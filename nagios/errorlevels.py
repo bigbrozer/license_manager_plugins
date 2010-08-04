@@ -26,6 +26,12 @@ class NagiosCritical(Exception):
         print "CRITICAL - %s" % msg
         raise SystemExit(2)
 
+class NagiosWarning(Exception):
+    """Exception raised to fire a WARNING event to Nagios and break the plugin"""
+    def __init__(self, msg):
+        print "WARNING - %s" % msg
+        raise SystemExit(1)
+
 class NagiosUnknown(Exception):
     """Exception raised to fire a UNKNOWN event to Nagios and break the plugin"""
     def __init__(self, msg):
