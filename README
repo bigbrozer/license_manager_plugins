@@ -8,12 +8,14 @@ About
 Collection of plugins to check the status of FLEXlm license server.
 
  * check_flexlm_status              : check status and license usage.
+ * check_flexlm_feature_expiration  : check if a feature is expired or about to expire.
 
 Features:
 
  * Check if license server is reachable (using a license file or port).
  * Check if vendor daemon is up and running.
  * Get license usage (available as performance data and in long output for direct information)
+ * Check if a feature is expired or about to expire (Warning if less than 15 days left before expiration, Critical if expired).
 
 Installation
 ============
@@ -55,12 +57,13 @@ Usage: check_flexlm_status.py [options]
 Options:
   -h, --help  show help message and exit
   -l LICENSE  FLEXlm port or license file to check
+  -d, --debug  Enable debug mode
 
 Example:
 
   check_flexlm_status.py -l 2700@my_license_server
 
-  OK - ABAQUSLM: usage: 275 / 17456 license(s)
+  OK - ABAQUSLM: usage: 275 / 17456 license(s) available.
   Feature 'abaqus': 130 / 150
   Feature 'ams': 0 / 1
   Feature 'aqua': 0 / 150
@@ -80,6 +83,38 @@ Example:
   Feature 'explicit': 30 / 150
   Feature 'foundation': 8 / 150
   Feature 'cfd': 0 / 150
+
+Usage: check_flexlm_feature_expiration.py [options]
+
+Options:
+  -h, --help   show this help message and exit
+  -l LICENSE   FLEXlm port or license file to check
+  -d, --debug  Enable debug mode
+
+Example:
+
+  check_flexlm_feature_expiration.py -l 2700@my_license_server
+  
+  OK - All features licenses are up to date.
+  Feature 'abaqus' will expire on 31-dec-2010.
+  Feature 'ams' will expire on 31-dec-2010.
+  Feature 'aqua' will expire on 31-dec-2010.
+  Feature 'design' will expire on 31-dec-2010.
+  Feature 'euler_lagrange' will expire on 31-dec-2010.
+  Feature 'multiphysics' will expire on 31-dec-2010.
+  Feature 'cse' will expire on 31-dec-2010.
+  Feature 'cosim_acusolve' will expire on 31-dec-2010.
+  Feature 'cosim_direct' will expire on 31-dec-2010.
+  Feature 'parallel' will expire on 31-dec-2010.
+  Feature 'cae' will expire on 31-dec-2010.
+  Feature 'viewer' will expire on 31-dec-2010.
+  Feature 'moldflow' will expire on 31-dec-2010.
+  Feature 'afcv5_structural' will expire on 31-dec-2010.
+  Feature 'afcv5_thermal' will expire on 31-dec-2010.
+  Feature 'standard' will expire on 31-dec-2010.
+  Feature 'explicit' will expire on 31-dec-2010.
+  Feature 'foundation' will expire on 31-dec-2010.
+  Feature 'cfd' will expire on 31-dec-2010.
 
 Contact
 =======

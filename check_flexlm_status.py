@@ -23,25 +23,9 @@
 
 # Python Std Lib
 import re
-import optparse
-
-# Import FLEXlm related stuff
 import backend.flexlm
-
-# Import exceptions handling
-from nagios.errorlevels import NagiosCritical, NagiosUnknown, NagiosOk
-
-def process_plugin_options():
-    """Process plugin arguments"""
-    o_parser = optparse.OptionParser()
-    o_parser.add_option('-l', dest='license', help='FLEXlm port or license file to check')
-    opt = o_parser.parse_args()[0]
-    
-    # Checking for mandatory options
-    if not opt.license:
-        raise NagiosUnknown("Syntax error: missing license information !")
-    
-    return opt
+from nagios.errorlevels import NagiosCritical, NagiosOk
+from nagios.arguments import process_plugin_options
 
 def format_perfdata(features):
     """Format the output of performance data"""
@@ -59,7 +43,10 @@ def run():
     
     # Get the output of lmutil / lmstat, catching errors
     try:
-        output = backend.flexlm.status("%s" % options.license)
+        if options.debug:
+            output = backend.flexlm.test_from_file("../tests/lmstat_status.txt")
+        else:
+            output = backend.flexlm.status("%s" % options.license)
     except backend.flexlm.FlexlmStatusError as e:
         raise NagiosCritical("%s (code: %s, license: '%s') !" % (e.errmsg, e.retcode, e.license))
     
@@ -91,7 +78,7 @@ def run():
                    'in_use': '0',
                    'total': '0',
                    'status': '',
-                   }
+        }
         match_feature_line = regexp_feature_name.search(line)
         if match_feature_line:
             # Store feature name
@@ -132,7 +119,7 @@ def run():
     for feature in all_feature_stats:
         nagios_longoutput += "Feature '%s': %s / %s\n" % (feature["name"], feature["in_use"], feature["total"])
     
-    nagios_output = "%s: usage: %d / %d license(s)\n%s" % (vendor_daemon, total_license_used, total_license_available, nagios_longoutput.rstrip('\n'))
+    nagios_output = "%s: usage: %d / %d license(s) available.\n%s" % (vendor_daemon, total_license_used, total_license_available, nagios_longoutput.rstrip('\n'))
     
     raise NagiosOk(nagios_output + nagios_perfdata)
     

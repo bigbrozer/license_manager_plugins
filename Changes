@@ -5,6 +5,9 @@
 Revision history
 ----------------
 
+0.04	01/09/2010 14:16:40 CEST
+	- Write plugin "check_flexlm_feature_expiration": check if a feature is expired or about to expire.
+
 0.03	22/07/2010 14:02:43 CEST
 	- Add missing LICENSE file
 	- Fix deadlocks reading from STDOUT pipe
