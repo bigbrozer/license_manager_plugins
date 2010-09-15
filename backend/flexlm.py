@@ -55,7 +55,7 @@ def status(license_port):
         error_pattern = re.compile('Error getting status: (.*). \(.*\)')
         error_match = error_pattern.search(lmstat_output[-1])
         if error_match: lmstat_error_message = error_match.group(1)
-        else: lmstat_error_message = "Unknown error !"
+        else: lmstat_error_message = "License server not available !"
         raise FlexlmStatusError(lmstat_error_message, lmstat.returncode, license_port)
     
     return lmstat_output
@@ -73,7 +73,7 @@ def expiration(license_port):
         error_pattern = re.compile('Error getting status: (.*). \(.*\)')
         error_match = error_pattern.search(lmstat_output[-1])
         if error_match: lmstat_error_message = error_match.group(1)
-        else: lmstat_error_message = "Unknown error !"
+        else: lmstat_error_message = "License server not available !"
         raise FlexlmStatusError(lmstat_error_message, lmstat.returncode, license_port)
     
     return lmstat_output
