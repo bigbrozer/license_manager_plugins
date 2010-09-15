@@ -20,6 +20,8 @@
 # along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
 #===============================================================================
 
+# TODO: add new argument to enable/disable showing of Nagios long output.
+
 import optparse
 from nagios.errorlevels import NagiosUnknown
 
