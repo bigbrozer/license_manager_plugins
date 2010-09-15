@@ -5,6 +5,9 @@
 Revision history
 ----------------
 
+0.05	15/09/2010 14:57:45 CEST
+	- Add a new argument --no-long-output to disable long output (compatibility with Nagios < 3.x).
+
 0.04	01/09/2010 14:16:40 CEST
 	- Write plugin "check_flexlm_feature_expiration": check if a feature is expired or about to expire.
 
