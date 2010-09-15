@@ -20,8 +20,6 @@
 # along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
 #===============================================================================
 
-# TODO: add new argument to enable/disable showing of Nagios long output.
-
 import optparse
 from nagios.errorlevels import NagiosUnknown
 
@@ -30,6 +28,7 @@ def process_plugin_options():
     o_parser = optparse.OptionParser()
     o_parser.add_option('-l', dest='license', help='FLEXlm port or license file to check')
     o_parser.add_option('-d', '--debug', dest='debug', action='store_true', help='Enable debug mode')
+    o_parser.add_option('--no-long-output', dest='longoutput', action='store_true', help='Disable Nagios long output (compatibility with Nagios < 3.x)')
     opt = o_parser.parse_args()[0]
     
     # Checking for options

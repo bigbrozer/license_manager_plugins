@@ -94,20 +94,23 @@ def run():
     # Checking if there is feature with problem, then output to Nagios
     if len(features_list['expired']) > 0:
         nagios_output = "There are %d licenses expired !\n" % len(features_list['expired'])
-        for feature in features_list['expired']:
-            nagios_longoutput += "Feature '%s' is expired !\n" % feature
+        if not options.longoutput:
+            for feature in features_list['expired']:
+                nagios_longoutput += "Feature '%s' is expired !\n" % feature
         raise NagiosCritical(nagios_output + nagios_longoutput)
     elif len(features_list['about_to_expire']) > 0:
         nagios_output = "There are %d licenses about to expire !\n" % len(features_list['about_to_expire'])
-        for feature in features_list['about_to_expire']:
-            name, days = feature
-            nagios_longoutput += "Feature '%s' will expire in %d days !\n" % (name, days)
+        if not options.longoutput:
+            for feature in features_list['about_to_expire']:
+                name, days = feature
+                nagios_longoutput += "Feature '%s' will expire in %d days !\n" % (name, days)
         raise NagiosWarning(nagios_output + nagios_longoutput)
     else:
         nagios_output = "All features licenses are up to date.\n"
-        for feature in features_list['uptodate']:
-            name, expire_date = feature
-            nagios_longoutput += "Feature '%s' will expire on %s.\n" % (name, expire_date)
+        if not options.longoutput:
+            for feature in features_list['uptodate']:
+                name, expire_date = feature
+                nagios_longoutput += "Feature '%s' will expire on %s.\n" % (name, expire_date)
         raise NagiosOk(nagios_output + nagios_longoutput)
     
 # Main

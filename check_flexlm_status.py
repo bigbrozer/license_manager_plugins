@@ -107,17 +107,19 @@ def run():
     
     # Output if errors are found in features
     if feature_error > 0:
-        for feature in all_feature_stats:
-            if feature["status"] == "ERROR":
-                nagios_longoutput += "Feature: %s\n" % feature["name"]
+        if not options.longoutput:
+            for feature in all_feature_stats:
+                if feature["status"] == "ERROR":
+                    nagios_longoutput += "Feature: %s\n" % feature["name"]
 
         nagios_output = "%s: %d feature(s) in error(s) !\n%s" % (vendor_daemon, feature_error, nagios_longoutput.rstrip('\n'))
         raise NagiosCritical(nagios_output + nagios_perfdata)
 
     # Output when everything is fine
     #
-    for feature in all_feature_stats:
-        nagios_longoutput += "Feature '%s': %s / %s\n" % (feature["name"], feature["in_use"], feature["total"])
+    if not options.longoutput:
+        for feature in all_feature_stats:
+            nagios_longoutput += "Feature '%s': %s / %s\n" % (feature["name"], feature["in_use"], feature["total"])
     
     nagios_output = "%s: usage: %d / %d license(s) available.\n%s" % (vendor_daemon, total_license_used, total_license_available, nagios_longoutput.rstrip('\n'))
     
