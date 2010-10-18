@@ -18,11 +18,13 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #===============================================================================
 
-# Specify the location of 'lmutil' command
+# Specify the location of license manager commands
 # Notes: use '\' on Windows hosts as folder separator !
 #
-#LMUTIL_PATH = "/usr/local/bin/lmutil"
+LMUTIL_PATH = "/usr/local/bin/lmutil"
+LSTCQRUN_PATH = "/usr/local/bin/lstc_qrun"
 
 # !! Testing only !!
 #
-LMUTIL_PATH = "../commands/flexlm/lmutil"
+#LMUTIL_PATH = "../commands/flexlm/lmutil"
+#LSTCQRUN_PATH = "../commands/lstc/linux/lstc_qrun"
