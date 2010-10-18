@@ -5,6 +5,9 @@
 Revision history
 ----------------
 
+0.06	18/10/2010 17:21:37 CEST
+	- New check to know status of LSTC License manager.
+
 0.05	15/09/2010 14:57:45 CEST
 	- Add a new argument --no-long-output to disable long output (compatibility with Nagios < 3.x).
 
