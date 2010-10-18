@@ -25,6 +25,7 @@
 import re
 from datetime import datetime
 import backend.flexlm
+import backend.util
 from nagios.errorlevels import NagiosCritical, NagiosWarning, NagiosOk
 from nagios.arguments import process_plugin_options
 
@@ -49,7 +50,7 @@ def run():
     # Get the output of lmutil / lmstat, catching errors
     try:
         if options.debug:
-            output = backend.flexlm.test_from_file("../tests/lmstat_expiration.txt")
+            output = backend.util.test_from_file("../tests/lmstat_expiration.txt")
         else:
             output = backend.flexlm.expiration("%s" % options.license)
     except backend.flexlm.FlexlmStatusError as e:
