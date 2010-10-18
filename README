@@ -1,5 +1,5 @@
 ================================================================================
-                           FLEXlm Nagios Plugins
+                           License Manager Plugins
 ================================================================================
 
 About
@@ -38,9 +38,9 @@ Note:
 
 Go inside your Nagios plugins directory (usually /usr/local/nagios/libexec), then type in:
 
-  git clone git://github.com/bigbrozer/flexlm_nagios_plugins.git
+  git clone git://github.com/bigbrozer/license_manager_plugins.git
 
-This will create a new folder "flexlm_nagios_plugins" with the plugin data inside.
+This will create a new folder "license_manager_plugins" with the plugin data inside.
 
 Configuration
 -------------
@@ -120,9 +120,9 @@ Contact
 =======
 
 Author              : Vincent 'v!nZ' Besançon
-Project home page   : http://github.com/bigbrozer/flexlm_nagios_plugins
+Project home page   : http://github.com/bigbrozer/license_manager_plugins
 Email               : besancon [DOT] vincent [AT] gmail [DOT] com
-Support             : http://github.com/bigbrozer/flexlm_nagios_plugins/issues
+Support             : http://github.com/bigbrozer/license_manager_plugins/issues
 
 Support
 =======

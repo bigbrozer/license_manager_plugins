@@ -1,14 +1,17 @@
 ================================================================================
-                           FLEXlm Nagios Plugins
+                           License Manager Plugins
 ================================================================================
 
 Todo list
 ---------
 
-- Add thresholds for expiration date of features (thresholds in days when to trigger WARNING and CRITICAL)
+Global:
+    - Rewrite README.
 
-- Write plugin "check_flexlm_feature_lock": check if a license for a feature is issued for a long time.
-  - Check if a feature is issued for too much time (thresholds in days availables).
+Flexlm:
+    - Add thresholds for expiration date of features (thresholds in days when to trigger WARNING and CRITICAL)
+    - Write plugin "check_flexlm_feature_lock": check if a license for a feature is issued for a long time.
+        - Check if a feature is issued for too much time (thresholds in days availables).
+    - Create a PNP template for license usage.
+        - Create a graph per DS.
 
-- Create a PNP template for license usage.
-  - Create a graph per DS.

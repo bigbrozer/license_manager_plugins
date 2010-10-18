@@ -1,25 +1,23 @@
 #!/usr/bin/env python2.6
-# -*- coding: ISO-8859-1 -*-
+# -*- coding: UTF-8 -*-
 #===============================================================================
 # Name          : check_flexlm_feature_expiration
 # Author        : Vincent BESANCON aka 'v!nZ' <besancon.vincent@gmail.com>
 # Description   : Check FLEXlm for any feature reaching expiration date
 #                 (or any already expired).
 #-------------------------------------------------------------------------------
-# This file is part of flexlm_nagios_plugins.
-#
-# flexlm_nagios_plugins is free software: you can redistribute it and/or modify
+# This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation, either version 3 of the License, or
 # (at your option) any later version.
 #
-# flexlm_nagios_plugins is distributed in the hope that it will be useful,
+# This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
 #
 # You should have received a copy of the GNU General Public License
-# along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #===============================================================================
 
 # TODO: Add thresholds defined by arguments
