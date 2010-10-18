@@ -1,5 +1,5 @@
 #===============================================================================
-# -*- coding: ISO-8859-1 -*-
+# -*- coding: UTF-8 -*-
 # Module        : backend.flexlm
 # Author        : Vincent BESANCON aka 'v!nZ' <besancon.vincent@gmail.com>
 # Description   : Utility functions to get info from FLEXlm license server.
@@ -19,6 +19,7 @@
 #===============================================================================
 
 # TODO: Check how to group status() and expiration() as a single function.
+# TODO: Rewrite variables like in lstc module.
 
 import re
 import subprocess
