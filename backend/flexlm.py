@@ -19,11 +19,9 @@
 #===============================================================================
 
 # TODO: Check how to group status() and expiration() as a single function.
-# TODO: Rewrite variables like in lstc module.
 
 import re
 import subprocess
-from nagios.errorlevels import NagiosUnknown
 
 # Plugin configuration
 import config
@@ -45,48 +43,34 @@ def status(license_port):
     """Execute a 'lmstat -a' command using lmutil on a remote server"""
     cmdline = [config.LMUTIL_PATH, "lmstat", "-c", license_port, '-a']
     
-    lmstat = subprocess.Popen(cmdline, stdout=subprocess.PIPE)
-    lmstat_output = lmstat.communicate()[0].split('\n')
+    cmd = subprocess.Popen(cmdline, stdout=subprocess.PIPE)
+    cmd_output = cmd.communicate()[0].split('\n')
     
     # Check return code
-    if lmstat.returncode != 0:
+    if cmd.returncode != 0:
         # Get error message
         error_pattern = re.compile('Error getting status: (.*). \(.*\)')
-        error_match = error_pattern.search(lmstat_output[-1])
-        if error_match: lmstat_error_message = error_match.group(1)
-        else: lmstat_error_message = "License server not available !"
-        raise FlexlmStatusError(lmstat_error_message, lmstat.returncode, license_port)
+        error_match = error_pattern.search(cmd_output[-1])
+        if error_match: error_message = error_match.group(1).title()
+        else: error_message = "License server not available !"
+        raise FlexlmStatusError(error_message, cmd.returncode, license_port)
     
-    return lmstat_output
+    return cmd_output
 
 def expiration(license_port):
     """Execute a 'lmstat -i' command using lmutil on a remote server"""
     cmdline = [config.LMUTIL_PATH, "lmstat", "-c", license_port, '-i']
     
-    lmstat = subprocess.Popen(cmdline, stdout=subprocess.PIPE)
-    lmstat_output = lmstat.communicate()[0].split('\n')
+    cmd = subprocess.Popen(cmdline, stdout=subprocess.PIPE)
+    cmd_output = cmd.communicate()[0].split('\n')
     
     # Check return code
-    if lmstat.returncode != 0:
+    if cmd.returncode != 0:
         # Get error message
         error_pattern = re.compile('Error getting status: (.*). \(.*\)')
-        error_match = error_pattern.search(lmstat_output[-1])
-        if error_match: lmstat_error_message = error_match.group(1)
-        else: lmstat_error_message = "License server not available !"
-        raise FlexlmStatusError(lmstat_error_message, lmstat.returncode, license_port)
+        error_match = error_pattern.search(cmd_output[-1])
+        if error_match: error_message = error_match.group(1).title()
+        else: error_message = "License server not available !"
+        raise FlexlmStatusError(error_message, cmd.returncode, license_port)
     
-    return lmstat_output
-
-#-------------------------------------------------------------------------------
-# Testing zone
-#-------------------------------------------------------------------------------
-def test_from_file(output_file):
-    """Used for testing purpose"""
-    try:
-        lmstat = open(output_file, 'r')
-    except IOError as e:
-        raise NagiosUnknown("Error loading test output file: %s" % e)
-    lmstat_output = lmstat.readlines()
-    lmstat.close()
-    
-    return lmstat_output
+    return cmd_output
