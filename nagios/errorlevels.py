@@ -1,5 +1,5 @@
 #===============================================================================
-# -*- coding: ISO-8859-1 -*-
+# -*- coding: UTF-8 -*-
 # Module        : errorlevels
 # Author        : Vincent BESANCON aka 'v!nZ' <besancon.vincent@gmail.com>
 # Description   : Define class for Nagios error exceptions.
