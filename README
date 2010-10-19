@@ -5,17 +5,14 @@
 About
 =====
 
-Collection of plugins to check the status of FLEXlm license server.
+Collection of plugins to check the status of industry major license managers. Currently supporting:
 
+FlexLM (Flexera Software):
  * check_flexlm_status              : check status and license usage.
  * check_flexlm_feature_expiration  : check if a feature is expired or about to expire.
 
-Features:
-
- * Check if license server is reachable (using a license file or port).
- * Check if vendor daemon is up and running.
- * Get license usage (available as performance data and in long output for direct information)
- * Check if a feature is expired or about to expire (Warning if less than 15 days left before expiration, Critical if expired).
+LSTC (LS-Dyna):
+ * check_lstc_status                : check status and number of connected users (running jobs).
 
 Installation
 ============
@@ -23,11 +20,19 @@ Installation
 Requirements
 ------------
 
-You need to install "lmutil" utility on your Nagios server in order to use the plugin:
+Note:
+  You do not need to install all license utility, only the one you will use !
 
-  http://www.globes.com/support/fnp_utilities_download.htm
+FlexLM:
+
+You need to install "lmutil" utility on your Nagios server in order to use the plugin:
+http://www.globes.com/support/fnp_utilities_download.htm
 
 Once you downloaded the file, copy content in a directory.
+
+LSTC:
+
+Todo: write LSTC requirements.
 
 Get the plugin package
 ----------------------
@@ -40,87 +45,33 @@ Go inside your Nagios plugins directory (usually /usr/local/nagios/libexec), the
 
   git clone git://github.com/bigbrozer/license_manager_plugins.git
 
-This will create a new folder "license_manager_plugins" with the plugin data inside.
+This will create a new folder "license_manager_plugins".
 
 Configuration
 -------------
 
-Edit the file "config.py" and set LMUTIL_PATH variable to the location of lmutil on your system.
+Edit the file "config.py" and set *_PATH variables to the correct location for each license tools on your system.
 
-  LMUTIL_PATH = "/path/to/lmutil"
+Note:
+  You do not need to configure all, only the one you will use !
 
 Usage
 =====
 
-Usage: check_flexlm_status.py [options]
+Usage: <plugin.py> [options]
 
 Options:
-  -h, --help  show help message and exit
-  -l LICENSE  FLEXlm port or license file to check
-  -d, --debug  Enable debug mode
-
-Example:
-
-  check_flexlm_status.py -l 2700@my_license_server
-
-  OK - ABAQUSLM: usage: 275 / 17456 license(s) available.
-  Feature 'abaqus': 130 / 150
-  Feature 'ams': 0 / 1
-  Feature 'aqua': 0 / 150
-  Feature 'design': 0 / 150
-  Feature 'euler_lagrange': 0 / 1
-  Feature 'multiphysics': 0 / 1
-  Feature 'cse': 0 / 1
-  Feature 'cosim_acusolve': 0 / 1
-  Feature 'cosim_direct': 0 / 1
-  Feature 'parallel': 8 / 16384
-  Feature 'cae': 1 / 2
-  Feature 'viewer': 6 / 9
-  Feature 'moldflow': 0 / 1
-  Feature 'afcv5_structural': 0 / 2
-  Feature 'afcv5_thermal': 0 / 2
-  Feature 'standard': 92 / 150
-  Feature 'explicit': 30 / 150
-  Feature 'foundation': 8 / 150
-  Feature 'cfd': 0 / 150
-
-Usage: check_flexlm_feature_expiration.py [options]
-
-Options:
-  -h, --help   show this help message and exit
-  -l LICENSE   FLEXlm port or license file to check
-  -d, --debug  Enable debug mode
-
-Example:
-
-  check_flexlm_feature_expiration.py -l 2700@my_license_server
-  
-  OK - All features licenses are up to date.
-  Feature 'abaqus' will expire on 31-dec-2010.
-  Feature 'ams' will expire on 31-dec-2010.
-  Feature 'aqua' will expire on 31-dec-2010.
-  Feature 'design' will expire on 31-dec-2010.
-  Feature 'euler_lagrange' will expire on 31-dec-2010.
-  Feature 'multiphysics' will expire on 31-dec-2010.
-  Feature 'cse' will expire on 31-dec-2010.
-  Feature 'cosim_acusolve' will expire on 31-dec-2010.
-  Feature 'cosim_direct' will expire on 31-dec-2010.
-  Feature 'parallel' will expire on 31-dec-2010.
-  Feature 'cae' will expire on 31-dec-2010.
-  Feature 'viewer' will expire on 31-dec-2010.
-  Feature 'moldflow' will expire on 31-dec-2010.
-  Feature 'afcv5_structural' will expire on 31-dec-2010.
-  Feature 'afcv5_thermal' will expire on 31-dec-2010.
-  Feature 'standard' will expire on 31-dec-2010.
-  Feature 'explicit' will expire on 31-dec-2010.
-  Feature 'foundation' will expire on 31-dec-2010.
-  Feature 'cfd' will expire on 31-dec-2010.
+  -h, --help            show help message and exit
+  -l LICENSE            FLEXlm port or license file to check
+  -d, --debug           Enable debug mode
+  --no-long-output      Disable Nagios long output (compatibility with Nagios < 3.x)
 
 Contact
 =======
 
 Author              : Vincent 'v!nZ' Besançon
 Project home page   : http://github.com/bigbrozer/license_manager_plugins
+Nagios Exchange     : http://exchange.nagios.org/directory/Plugins/License-Management/Industry-License-Manager-Plugins/details
 Email               : besancon [DOT] vincent [AT] gmail [DOT] com
 Support             : http://github.com/bigbrozer/license_manager_plugins/issues
 
@@ -128,7 +79,8 @@ Support
 =======
 
 Feel free to send me email if you need help or send me remarks, suggestions, etc...
-I recommend to use issue page on Github (see Support link above) if you think there is a problem with this plugin.
+I recommend to use issue page on Github (see Support link above) if you think there is
+a problem with this plugin.
 
 License
 =======
