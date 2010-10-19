@@ -1,5 +1,5 @@
 #===============================================================================
-# -*- coding: ISO-8859-1 -*-
+# -*- coding: UTF-8 -*-
 # Module        : arguments
 # Author        : Vincent BESANCON aka 'v!nZ' <besancon.vincent@gmail.com>
 # Description   : Handle plugin arguments.
@@ -24,7 +24,7 @@ from nagios.errorlevels import NagiosUnknown
 def process_plugin_options():
     """Process plugin arguments"""
     o_parser = optparse.OptionParser()
-    o_parser.add_option('-l', dest='license', help='FLEXlm port or license file to check')
+    o_parser.add_option('-l', dest='license', help='Port or license file to check')
     o_parser.add_option('-d', '--debug', dest='debug', action='store_true', help='Enable debug mode')
     o_parser.add_option('--no-long-output', dest='longoutput', action='store_true', help='Disable Nagios long output (compatibility with Nagios < 3.x)')
     opt = o_parser.parse_args()[0]
