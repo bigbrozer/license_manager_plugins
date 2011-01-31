@@ -53,7 +53,7 @@ def status(ini_file_location):
     cmd_output = cmd.communicate()[0]
 
     # Check if i4* command is successful
-    done_pattern = re.compile("Completed license transaction.*")
+    done_pattern = re.compile(r"Completed license transaction.*")
     done_match = done_pattern.search(cmd_output)
     if not done_match:
         raise LumStatusError("Error occured when checking for LUM !", cmd.returncode, os.path.basename(ini_file_location))
