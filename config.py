@@ -23,10 +23,10 @@
 #
 LMUTIL_PATH = "/usr/local/bin/lmutil"
 LSTCQRUN_PATH = "/usr/local/bin/lstc_qrun"
-#I4TV_PATH = "/usr/local/bin/i4tv"
+I4TV_PATH = "/usr/local/bin/i4tv"
 
 # !! Testing only !!
 #
 #LMUTIL_PATH = "../commands/flexlm/lmutil"
 #LSTCQRUN_PATH = "../commands/lstc/linux/lstc_qrun"
-I4TV_PATH = "../commands/lum/i4tv"
+#I4TV_PATH = "../commands/lum/i4tv"
