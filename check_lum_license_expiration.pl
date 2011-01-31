@@ -39,8 +39,8 @@ my $plugin_name = basename($0);
 my $TIMEOUT = 30;
 
 # I4BLT command
-#my $i4blt_command = "/usr/local/bin/i4blt -lp -i|";
-my $i4blt_command = "../commands/lum/i4blt -lp -i|";
+my $i4blt_command = "i4blt -lp -i|";
+#my $i4blt_command = "../commands/lum/i4blt -lp -i|";
 
 # This will not exist anymore when switching Colisée from Solaris to Windows !!
 #if ($^O eq "MSWin32") {
