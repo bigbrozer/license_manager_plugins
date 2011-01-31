@@ -1,18 +1,23 @@
-================================================================================
-                           License Manager Plugins
-================================================================================
+License Manager Plugins
+~~~~~~~~~~~~~~~~~~~~~~~
 
 About
 =====
 
 Collection of plugins to check the status of industry major license managers. Currently supporting:
 
-FlexLM (Flexera Software):
- * check_flexlm_status              : check status and license usage.
- * check_flexlm_feature_expiration  : check if a feature is expired or about to expire.
+*FlexLM (Flexera Software):*
 
-LSTC (LS-Dyna):
- * check_lstc_status                : check status and number of connected users (running jobs).
+- check_flexlm_status              : check status and license usage.
+- check_flexlm_feature_expiration  : check if a feature is expired or about to expire.
+
+*LSTC (LS-Dyna):*
+
+- check_lstc_status                : check status and number of connected users (running jobs).
+
+*LUM (IBM License Use Management):*
+
+- check_lum_status                 : check status of LUM license server (available or not).
 
 Installation
 ============
@@ -20,19 +25,25 @@ Installation
 Requirements
 ------------
 
-Note:
+.. note::
   You do not need to install all license utility, only the one you will use !
 
-FlexLM:
+*FlexLM:*
 
 You need to install "lmutil" utility on your Nagios server in order to use the plugin:
 http://www.globes.com/support/fnp_utilities_download.htm
 
 Once you downloaded the file, copy content in a directory.
 
-LSTC:
+*LSTC:*
 
-TODO: write LSTC requirements.
+- Need command "lstc_qrun".
+- TODO: write LSTC requirements.
+
+*LUM:*
+
+- Need commands "i4tv" and "i4blt".
+- TODO: write LUM requirements.
 
 Get the plugin package
 ----------------------
@@ -41,7 +52,7 @@ Note:
   I recommend installing 'git' on your Nagios server in order to download and keep up to date this plugin.
   If you are behind a proxy, you can export http_proxy environment variable before.
 
-Go inside your Nagios plugins directory (usually /usr/local/nagios/libexec), then type in:
+Go inside your Nagios plugins directory (usually /usr/local/nagios/libexec), then type in::
 
   git clone git://github.com/bigbrozer/license_manager_plugins.git
 
@@ -52,19 +63,21 @@ Configuration
 
 Edit the file "config.py" and set *_PATH variables to the correct location for each license tools on your system.
 
-Note:
+.. note::
   You do not need to configure all, only the one you will use !
+
+!! Specials for LUM plugins !!
+
+If you will use plugin "check_lum_license_expiration.pl", you must get the file "i4rpt.fmt" from your LUM installation and copy it "/opt/lum". It also assumes that you have both commands "i4tv" and "i4blt" in your PATH.
+
+This is a old script I did quickly in the past (written in Perl). It will do the job, but I will rewrite it using Python like the others.
 
 Usage
 =====
 
-Usage: <plugin.py> [options]
+See help by typing::
 
-Options:
-  -h, --help            show help message and exit
-  -l LICENSE            FLEXlm port or license file to check
-  -d, --debug           Enable debug mode
-  --no-long-output      Disable Nagios long output (compatibility with Nagios < 3.x)
+  plugin.py|pl -h
 
 Contact
 =======
