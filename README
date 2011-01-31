@@ -25,7 +25,7 @@ Installation
 Requirements
 ------------
 
-.. note::
+Note:
   You do not need to install all license utility, only the one you will use !
 
 *FlexLM:*
@@ -63,10 +63,11 @@ Configuration
 
 Edit the file "config.py" and set *_PATH variables to the correct location for each license tools on your system.
 
-.. note::
+Note:
   You do not need to configure all, only the one you will use !
 
-!! Specials for LUM plugins !!
+Specials for LUM plugins
+------------------------
 
 If you will use plugin "check_lum_license_expiration.pl", you must get the file "i4rpt.fmt" from your LUM installation and copy it "/opt/lum". It also assumes that you have both commands "i4tv" and "i4blt" in your PATH.
 
@@ -82,11 +83,11 @@ See help by typing::
 Contact
 =======
 
-Author              : Vincent 'v!nZ' Besançon
-Project home page   : http://github.com/bigbrozer/license_manager_plugins
-Nagios Exchange     : http://exchange.nagios.org/directory/Plugins/License-Management/Industry-License-Manager-Plugins/details
-Email               : besancon [DOT] vincent [AT] gmail [DOT] com
-Support             : http://github.com/bigbrozer/license_manager_plugins/issues
+**Author:** Vincent 'v!nZ' Besançon
+**Project home page:** http://github.com/bigbrozer/license_manager_plugins
+**Nagios Exchange:** http://exchange.nagios.org/directory/Plugins/License-Management/Industry-License-Manager-Plugins/details
+**Email:** besancon [DOT] vincent [AT] gmail [DOT] com
+**Support:** http://github.com/bigbrozer/license_manager_plugins/issues
 
 Support
 =======
