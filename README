@@ -18,6 +18,7 @@ Collection of plugins to check the status of industry major license managers. Cu
 *LUM (IBM License Use Management):*
 
 - check_lum_status                 : check status of LUM license server (available or not).
+- check_lum_license_expiration     : check if a product is expired or about to expire for LUM.
 
 Installation
 ============
