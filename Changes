@@ -6,7 +6,7 @@ Revision history
 ----------------
 
 0.10  29/08/11
-	- ...
+	- Added a new plugin to check LM-X license manager status.
 
 0.08	Mon, 31 Jan 2011 14:28:05 +0100
 	- Added new plugin to check LUM license server status.

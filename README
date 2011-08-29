@@ -6,6 +6,10 @@ About
 
 Collection of plugins to check the status of industry major license managers. Currently supporting:
 
+*LM-X License Manager (X-Formation):*
+
+- check_lmx_status                 : check status and license usage.
+
 *FlexLM (Flexera Software):*
 
 - check_flexlm_status              : check status and license usage.
@@ -28,6 +32,11 @@ Requirements
 
 Note:
   You do not need to install all license utility, only the one you will use !
+
+*LM-X:*
+
+You need to get from the support page on X-Formation website the 'lmxendutil' utility. Copy it in your PATH or wherever you want.
+Then configure the plugin, see below.
 
 *FlexLM:*
 

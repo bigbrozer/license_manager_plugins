@@ -30,5 +30,5 @@ I4TV_PATH = "/usr/local/bin/i4tv"
 #
 #LMUTIL_PATH = "../commands/flexlm/lmutil"
 #LSTCQRUN_PATH = "../commands/lstc/linux/lstc_qrun"
-LMXENDUTIL_PATH = "/home/besancon/Testing/Altair/bin/lmxendutil"
+#LMXENDUTIL_PATH = "/home/besancon/Testing/Altair/bin/lmxendutil"
 #I4TV_PATH = "../commands/lum/i4tv"
