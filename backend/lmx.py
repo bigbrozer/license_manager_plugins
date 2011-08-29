@@ -36,7 +36,79 @@ class LmxStatusError(Exception):
         self.license = license
 
 #-------------------------------------------------------------------------------
-# Lmx related
+# Lmx classes
+#-------------------------------------------------------------------------------
+
+class Feature(object):
+    """Store data about a feature: name, used licenses and total."""
+
+    def __init__(self, name, used_licenses, total_licenses):
+        self.name = name
+
+        try:
+            self.used_licenses = long(used_licenses)
+            self.total_licenses = long(total_licenses)
+        except ValueError as e:
+            raise NagiosUnknown('Exception: %s' % e)
+
+    def __str__(self):
+        """Print feature data as text to be used in Nagios long output."""
+        return '%s: %d / %d' % (self.name, self.used_licenses, self.total_licenses)
+
+    def print_perfdata(self):
+        """Print feature performance data string."""
+        return '\'%s\'=%d;;;0;%d' % (self.name, self.used_licenses, self.total_licenses)
+
+class Features(object):
+    """This class stores all features objects. She is able to compute some global stats about licenses usage."""
+
+    # Customize operators
+    def __init__(self):
+        self.features = []
+
+    def __iter__(self):
+        return iter(self.features)
+
+    def __len__(self):
+        return len(self.features)
+    
+    def __setitem__(self, key, value):
+        self.features[key] = value
+
+    def __getitem__(self, key):
+        return self.features[key]
+
+    # Public methods
+    def append(self, value):
+        self.features.append(value)
+
+    def calc_total_licenses(self):
+        """Calculate the total number of available licenses for all features."""
+        total = 0
+        for feature in self:
+            total += feature.total_licenses
+        return total
+
+    def calc_used_licenses(self):
+        """Calculate the total number of used licenses."""
+        in_use = 0
+        for feature in self:
+            in_use += feature.used_licenses
+        return in_use
+
+    def __str__(self):
+        """Return the Nagios output when all is OK."""
+        return 'LM-X: usage: %d / %d license(s) available.' % (self.calc_used_licenses(), self.calc_total_licenses())
+
+    def print_perfdata(self):
+        """Construct and return the perfdata string for all features."""
+        perfdatas = [' |']
+        for feature in self:
+            perfdatas.append(feature.print_perfdata())
+        return " ".join(perfdatas)
+
+#-------------------------------------------------------------------------------
+# Lmx functions
 #-------------------------------------------------------------------------------
 
 def status_xml(remote_host, license_port):
