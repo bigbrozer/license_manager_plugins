@@ -9,6 +9,7 @@ CREATE_DIR=install -d -m 0755
 # Install details
 PLUGIN=license_manager
 PLUGIN_INSTALLDIR=$(DESTDIR)/opt/faurecia/plugins/${PLUGIN}
+TAG=HEAD
 
 # Files
 BIN=check_*.py
@@ -29,6 +30,11 @@ install_dirs:
 	${CREATE_DIR} ${PLUGIN_INSTALLDIR}/nagios
 	${CREATE_DIR} ${PLUGIN_INSTALLDIR}/backend
 
+orig:
+	${CREATE_DIR} package
+	git archive --prefix=fau-license-manager-${TAG}/ -o package/fau-license-manager_${TAG}.orig.tar HEAD
+	gzip package/fau-license-manager_${TAG}.orig.tar
+
 clean:
 	@echo 'Cleaning Python byte code files...'
 	@find . -name '*.pyc' -exec rm -f {} +
@@ -37,4 +43,7 @@ clean:
 	@echo 'Cleaning backup files...'
 	@find . -name '*~' -exec rm -f {} +
 	@find . -name '#*#' -exec rm -f {} +
+
+	@echo 'Remove package archive directory...'
+	@rm -rf package/
 
