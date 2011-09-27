@@ -19,6 +19,7 @@
 #===============================================================================
 
 import subprocess
+from datetime import datetime
 from nagios.errorlevels import NagiosUnknown
 
 # Plugin configuration
@@ -42,27 +43,30 @@ class LmxStatusError(Exception):
 class Feature(object):
     """Store data about a feature: name, used licenses and total."""
 
-    def __init__(self, name, used_licenses, total_licenses):
+    def __init__(self, name, used_licenses, total_licenses, expire_date):
         self.name = name
 
         try:
             self.used_licenses = long(used_licenses)
             self.total_licenses = long(total_licenses)
+            self.expires = datetime.strptime(expire_date, '%Y-%m-%d')
         except ValueError as e:
             raise NagiosUnknown('Exception: %s' % e)
 
     def __str__(self):
         """Print feature data as text to be used in Nagios long output."""
-        return '%s: %d / %d' % (self.name, self.used_licenses, self.total_licenses)
+        return '{0:>s}: {1:d} / {2:d}'.format(self.name, self.used_licenses, self.total_licenses)
 
     def print_perfdata(self):
         """Print feature performance data string."""
-        return '\'%s\'=%d;;;0;%d' % (self.name, self.used_licenses, self.total_licenses)
+        return '\'{0:>s}\'={1:d};;;0;{2:d}'.format(self.name, self.used_licenses, self.total_licenses)
 
 class Features(object):
     """This class stores all features objects. She is able to compute some global stats about licenses usage."""
 
-    # Customize operators
+    today_date = datetime.today()
+
+    # Class customization
     def __init__(self):
         self.features = []
 
@@ -78,8 +82,13 @@ class Features(object):
     def __getitem__(self, key):
         return self.features[key]
 
+    def __str__(self):
+        """Return the Nagios output when all is OK."""
+        return 'LM-X: usage: %d / %d license(s) available.' % (self.calc_used_licenses(), self.calc_total_licenses())
+
     # Public methods
     def append(self, value):
+        """Lists append-like"""
         self.features.append(value)
 
     def calc_total_licenses(self):
@@ -96,9 +105,19 @@ class Features(object):
             in_use += feature.used_licenses
         return in_use
 
-    def __str__(self):
-        """Return the Nagios output when all is OK."""
-        return 'LM-X: usage: %d / %d license(s) available.' % (self.calc_used_licenses(), self.calc_total_licenses())
+    def calc_expired_license(self):
+        """Return a dictionnary "feature name": number of days before expiration."""
+        remains = 0
+        expire_list = {}
+        for feature in self:
+            td = feature.expires - Features.today_date
+            if td.days < 0:
+                remains = 0
+            else:
+                remains = td.days
+            expire_list[feature.name] = remains
+        return expire_list
+
 
     def print_perfdata(self):
         """Construct and return the perfdata string for all features."""
