@@ -125,7 +125,7 @@ EOT
 
 sub help {
    print "\n==== Check license expiration for LUM license manager ====\n\n";
-   print "Creative Commons Attribution-Noncommercial-Share Alike 2.0 France\n";
+   print "GPL v3\n";
    print "(c)2010 Vincent 'v!nZ' BESANCON, <vincent.besancon\@faurecia.com>\n\n";
    print_description();
    print_usage();
