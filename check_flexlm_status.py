@@ -106,7 +106,7 @@ def run():
     
     # Output if errors are found in features
     if feature_error > 0:
-        if not options.longoutput:
+        if not options.nolongoutput:
             for feature in all_feature_stats:
                 if feature["status"] == "ERROR":
                     nagios_longoutput += "Feature: %s\n" % feature["name"]
@@ -116,7 +116,7 @@ def run():
 
     # Output when everything is fine
     #
-    if not options.longoutput:
+    if not options.nolongoutput:
         for feature in all_feature_stats:
             nagios_longoutput += "Feature '%s': %s / %s\n" % (feature["name"], feature["in_use"], feature["total"])
     

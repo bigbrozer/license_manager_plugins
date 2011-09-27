@@ -52,7 +52,7 @@ def run():
     nagios_longoutput = ""
     nagios_output = ""
     if len(servers_up) > 0:
-        if not options.longoutput:
+        if not options.nolongoutput:
             for server in servers_up:
                 nagios_longoutput += "\nServer up: {0}".format(server)
 

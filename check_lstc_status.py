@@ -70,7 +70,7 @@ def run():
 
     # Output to Nagios
     nagios_output = nagios_output % (verb, len(connected_users), plural)
-    if not options.longoutput:
+    if not options.nolongoutput:
         nagios_longoutput = '\n'
         for user in connected_users:
             nagios_longoutput += "User %s from host %s.\n" % (user[0], user[1])
