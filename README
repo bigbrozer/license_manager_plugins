@@ -8,7 +8,7 @@ Collection of plugins to check the status of industry major license managers. Cu
 
 *LM-X License Manager (X-Formation):*
 
-- check_lmx_status                 : check status and license usage.
+- check_lmx_status                 : check status and license usage and license expiration.
 
 *FlexLM (Flexera Software):*
 
@@ -71,24 +71,98 @@ This will create a new folder "license_manager_plugins".
 Configuration
 -------------
 
-Edit the file "config.py" and set *_PATH variables to the correct location for each license tools on your system.
+Edit the file "config.py" and set *_PATH variables to the correct location for each license tools on your system. By
+default, commands are searched in PATH.
 
 Note:
   You do not need to configure all, only the one you will use !
 
-Specials for LUM plugins
-------------------------
-
-If you will use plugin "check_lum_license_expiration.pl", you must get the file "i4rpt.fmt" from your LUM installation and copy it "/opt/lum". It also assumes that you have both commands "i4tv" and "i4blt" in your PATH.
-
-This is a old script I did quickly in the past (written in Perl). It will do the job, but I will rewrite it using Python like the others.
-
 Usage
 =====
 
-See help by typing::
+Usage for each plugins::
 
-  plugin.py|pl -h
+  Usage: check_flexlm_feature_expiration.py [options]
+
+  Options:
+    -h, --help        show this help message and exit
+    -l LICENSE        License file or remote host as <port>@<remote_host>
+    -p PORT           License port (only for backend that does not support
+                      remote host as <port>@<remote_host>)
+    -d, --debug       Enable debug mode
+    --no-long-output  Disable Nagios long output (compatibility with Nagios <
+                      3.x)
+  --------------------------------------------------
+
+  Usage: check_flexlm_status.py [options]
+
+  Options:
+    -h, --help        show this help message and exit
+    -l LICENSE        License file or remote host as <port>@<remote_host>
+    -p PORT           License port (only for backend that does not support
+                      remote host as <port>@<remote_host>)
+    -d, --debug       Enable debug mode
+    --no-long-output  Disable Nagios long output (compatibility with Nagios <
+                      3.x)
+  --------------------------------------------------
+
+  Usage: check_lmx_status.py [options]
+
+  Options:
+    -h, --help        show this help message and exit
+    -m MODE           Mode for the plugins, either "status" (default) or
+                      "expire".
+    -l LICENSE        License file or remote host as <port>@<remote_host>
+    -p PORT           License port (only for backend that does not support
+                      remote host as <port>@<remote_host>)
+    -d, --debug       Enable debug mode
+    --no-long-output  Disable Nagios long output (compatibility with Nagios <
+                      3.x)
+  --------------------------------------------------
+
+  Usage: check_lstc_status.py [options]
+
+  Options:
+    -h, --help        show this help message and exit
+    -l LICENSE        License file or remote host as <port>@<remote_host>
+    -p PORT           License port (only for backend that does not support
+                      remote host as <port>@<remote_host>)
+    -d, --debug       Enable debug mode
+    --no-long-output  Disable Nagios long output (compatibility with Nagios <
+                      3.x)
+  --------------------------------------------------
+
+  Usage: check_lum_license_expiration.pl [-v] [-h]
+
+  Options:
+   -h, --help
+     Print this help message.
+   -v, --verbose
+     Print debugging information, Nagios should truncate output.
+   -l, --license
+     Specify license INI file location for i4blt command (this will be used to set IFOR_CONFIG env variable).
+  --------------------------------------------------
+
+  Usage: check_lum_status.py [options]
+
+  Options:
+    -h, --help        show this help message and exit
+    -l LICENSE        License file or remote host as <port>@<remote_host>
+    -p PORT           License port (only for backend that does not support
+                      remote host as <port>@<remote_host>)
+    -d, --debug       Enable debug mode
+    --no-long-output  Disable Nagios long output (compatibility with Nagios <
+                      3.x)
+  --------------------------------------------------
+
+Specials for LUM plugins
+========================
+
+If you will use plugin `check_lum_license_expiration.pl`, you must get the file `i4rpt.fmt` from your LUM installation
+and copy it `/opt/lum`. It also assumes that you have both commands "i4tv" and "i4blt" in your PATH.
+
+This is a old script I did quickly in the past (written in Perl). It will do the job, but I will rewrite it using Python
+like the others.
 
 Contact
 =======
@@ -103,7 +177,7 @@ Support
 =======
 
 Feel free to send me email if you need help or send me remarks, suggestions, etc...
-I recommend to use issue page on Github (see Support link above) if you think there is
+**I recommend to use issue page on Github** (see Support link above) if you think there is
 a problem with this plugin.
 
 License
