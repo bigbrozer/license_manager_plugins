@@ -21,14 +21,9 @@
 # Specify the location of license manager commands
 # Notes: use '\' on Windows hosts as folder separator !
 #
-LMUTIL_PATH = "/usr/local/bin/lmutil"
-LSTCQRUN_PATH = "/usr/local/bin/lstc_qrun"
-LMXENDUTIL_PATH = "/usr/local/bin/lmxendutil"
-I4TV_PATH = "/usr/local/bin/i4tv"
-
-# !! Testing only !!
+# By default, commands are searched in PATH env variable.
 #
-#LMUTIL_PATH = "../commands/flexlm/lmutil"
-#LSTCQRUN_PATH = "../commands/lstc/linux/lstc_qrun"
-#LMXENDUTIL_PATH = "/home/besancon/Testing/Altair/bin/lmxendutil"
-#I4TV_PATH = "../commands/lum/i4tv"
+LMUTIL_PATH = "lmutil"
+LSTCQRUN_PATH = "lstc_qrun"
+LMXENDUTIL_PATH = "lmxendutil"
+I4TV_PATH = "i4tv"
