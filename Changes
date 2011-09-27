@@ -5,7 +5,12 @@
 Revision history
 ----------------
 
-0.10  29/08/11
+0.14	27/09/2011
+	- This is possible now to specify specific to plugin arguments.
+	- Added a mode for check_lmx_status to check for license expiration.
+	- Updated README so now we have the usage for each plugins.
+
+0.10	29/08/2011
 	- Added a new plugin to check LM-X license manager status.
     - Create a Makefile to automate some stuff.
 
@@ -13,28 +18,28 @@ Revision history
 	- Added new plugin to check LUM license server status.
 	- Added new plugin to check LUM license are expired.
 
-0.07	19/10/2010 15:02:42 CEST
+0.07	19/10/2010
 	- Updated whole project, this is a collection of industry major license manager plugins now.
 
-0.06	18/10/2010 17:21:37 CEST
+0.06	18/10/2010
 	- New check to know status of LSTC License manager.
 
-0.05	15/09/2010 14:57:45 CEST
+0.05	15/09/2010
 	- Add a new argument --no-long-output to disable long output (compatibility with Nagios < 3.x).
 
-0.04	01/09/2010 14:16:40 CEST
+0.04	01/09/2010
 	- Write plugin "check_flexlm_feature_expiration": check if a feature is expired or about to expire.
 
-0.03	22/07/2010 14:02:43 CEST
+0.03	22/07/2010
 	- Add missing LICENSE file
 	- Fix deadlocks reading from STDOUT pipe
 	- Updated documentation
 	- Setup GIT repo
 
-0.02	23/06/2010 17:30:22 CEST
+0.02	23/06/2010
 	- Created documentation
 	- Add error message from lmutil output
 	- Added performance data
 
-0.01	21/06/2010 15:24:32 CEST
+0.01	21/06/2010
 	- Initial revision
