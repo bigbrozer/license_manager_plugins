@@ -5,6 +5,10 @@
 Revision history
 ----------------
 
+0.14p1	23/11/2011
+	- Fixed plugin check_lmx_status that was not able to return a OK state when
+    all features expiration date was far away in the future.
+
 0.14	27/09/2011
 	- This is possible now to specify specific to plugin arguments.
 	- Added a mode for check_lmx_status to check for license expiration.
