@@ -87,7 +87,7 @@ def run():
     # EXPIRATION
     elif options.mode == 'expire':
         days_remaining = features.calc_expired_license()
-        if not len(days_remaining):
+        if min(days_remaining.values()) > 15:
             raise NagiosOk('Features are up-to-date.')
 
         count = 0
